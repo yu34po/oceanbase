@@ -1149,6 +1149,9 @@ inline int ObSql::handle_text_query(const ObString& stmt, ObSqlCtx& context, ObR
   ObIAllocator& allocator = THIS_WORKER.get_sql_arena_allocator();
   ObSQLSessionInfo& session = result.get_session();
   const uint64_t tenant_id = session.get_effective_tenant_id();
+  if (tenant_id > 1000) {
+     LOG_WARN("break point");
+  }
   ObExecContext& ectx = result.get_exec_context();
   int get_plan_err = OB_SUCCESS;  // used for judge whether add plan to plan cache
   bool use_plan_cache = session.get_local_ob_enable_plan_cache();

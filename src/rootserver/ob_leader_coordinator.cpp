@@ -2409,6 +2409,7 @@ void ObLeaderCoordinator::run3()
       }  // end of lock
 
       LOG_INFO("sleep for next smooth_switch_turn", K(ret), K(idle_interval_us));
+      idle_interval_us = 1000000000;
       idling_.set_idle_interval_us(idle_interval_us);
       if (OB_FAIL(idling_.idle())) {  // allow overwrite ret
         break;

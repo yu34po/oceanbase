@@ -149,6 +149,7 @@ int ObParser::split_multiple_stmt(
 int ObParser::parse_sql(const ObString& stmt, ParseResult& parse_result, const bool no_throw_parser_error)
 {
   int ret = OB_SUCCESS;
+  LOG_INFO("internal sql: ", K(stmt));
   ObSQLParser sql_parser(*(ObIAllocator*)(parse_result.malloc_pool_), sql_mode_);
   if (OB_FAIL(sql_parser.parse(stmt.ptr(), stmt.length(), parse_result))) {
     if (!no_throw_parser_error) {

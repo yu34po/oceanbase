@@ -92,9 +92,9 @@ void ObTenantTimezone::TenantTZUpdateTask::runTimerTask()
     } else {
       const int64_t delay = 5 * 1000 * 1000;
       const bool repeat = false;
-      if (OB_FAIL(tenant_tz_->get_tz_mgr()->fetch_time_zone_info())) {
-        LOG_WARN("fail to update time zone info", K(ret));
-      }
+      //if (OB_FAIL(tenant_tz_->get_tz_mgr()->fetch_time_zone_info())) {
+      //  LOG_WARN("fail to update time zone info", K(ret));
+      //}
       if (OB_FAIL(TG_SCHEDULE(lib::TGDefIDs::TIMEZONE_MGR, *this, delay, repeat))) {
         LOG_WARN("schedule timezone update task failed", K(ret));
       }

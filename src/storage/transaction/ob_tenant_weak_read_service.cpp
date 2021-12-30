@@ -532,7 +532,7 @@ void ObTenantWeakReadService::run1()
   (void)prctl(PR_SET_NAME, "WeakReadService", 0, 0, 0);
   while (!has_set_stop()) {
     int64_t begin_tstamp = ObTimeUtility::current_time();
-    do_thread_task_(begin_tstamp, last_print_stat_ts);
+    //do_thread_task_(begin_tstamp, last_print_stat_ts);
     int64_t end_tstamp = ObTimeUtility::current_time();
     int64_t wait_interval = THREAD_RUN_INTERVAL - (end_tstamp - begin_tstamp);
     if (wait_interval > 0) {
